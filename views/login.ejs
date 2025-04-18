@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .first-page {
+            background: url('https://t4.ftcdn.net/jpg/06/00/28/17/360_F_600281716_rzh4YkugirCTIXphXCZHd16uAvC7up7t.jpg') no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .error-message {
+            color: #ff3333;
+            background: rgba(255, 200, 200, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+            border: 1px solid #ff3333;
+        }
+    </style>
+</head>
+<body class="first-page">
+    <div class="login-box">
+        <form action="/login" method="post">
+            <h1>Login</h1>
+            
+            <% if (typeof error !== 'undefined') { %>
+                <div class="error-message">
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <div class="input-login-box">
+                <input type="email" name="email" id="email" placeholder="Email" required autocomplete="email"> 
+                <label for="email">Email</label>
+                <img src="image/bxs-user.svg" alt="">   
+            </div> 
+            
+            <div class="input-login-box">
+                <input type="password" name="password" placeholder="Password" id="password" required>
+                <label for="password">Password</label>    
+                <img src="image/bxs-lock.svg" id="closedlock">
+            </div>
+
+            <div class="login-forget">
+                <a href="/forgot-password">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn">
+                Login
+            </button>
+
+            <div class="register-link">
+                <p>Don't have an account? 
+                    <a id="signupbutton" href="/register">Register!</a>
+                </p>
+            </div>
+        </form>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>

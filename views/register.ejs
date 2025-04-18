@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body class="first-page">
+    <div class="login-box">
+        <% if (error) { %>
+            <div class="alert-danger">
+                <strong>Error:</strong> <%= error %>
+                <% if (typeof error === 'string' && error.includes('User validation failed')) { %>
+                    <p>Please check all fields are filled correctly</p>
+                <% } %>
+            </div>
+        <% } %>
+
+        <form action="/register" method="post">
+            <h1>Register</h1>
+
+            <div class="input-login-box">
+                <input type="text" name="firstName" id="firstName" 
+                       value="<%= formData && formData.firstName || '' %>"
+                       placeholder="First Name" required>
+                <label for="firstName">First Name</label>
+            </div>
+
+            <div class="input-login-box">
+                <input type="text" name="lastName" id="lastName" 
+                       value="<%= formData && formData.lastName || '' %>"
+                       placeholder="Last Name" required>
+                <label for="lastName">Last Name</label>
+            </div>
+
+            <div class="input-login-box">
+                <input type="email" name="email" id="email" 
+                       value="<%= formData && formData.email || '' %>"
+                       placeholder="Email" required autocomplete="email">
+                <label for="email">Email</label>
+                <img src="image/bxs-user.svg" alt="">   
+            </div> 
+
+            <div class="input-login-box">
+                <input type="password" name="password" placeholder="Password" id="password" required minlength="6">
+                <label for="password">Password</label>    
+                <img src="image/bxs-lock.svg" id="closedlock">
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+
+            <div class="register-link">
+                <p>Already have an account? 
+                    <a id="signupbutton" href="/login">Login!</a>
+                </p>
+            </div>
+        </form>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>
