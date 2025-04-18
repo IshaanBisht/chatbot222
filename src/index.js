@@ -1,8 +1,6 @@
-const connectMongo = require('./config')
 require('dotenv').config();
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
-
 
 const express = require("express");
 const path = require("path");
@@ -19,6 +17,7 @@ const User = collection;
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
+
 
 
 // Session config
@@ -324,9 +323,6 @@ io.on("connection", (socket) => {
     }
   });
 });
-
-connectMongo()
-
 
 // Start server
 const PORT = process.env.PORT || 7000;

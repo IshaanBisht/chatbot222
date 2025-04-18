@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 // Async function to connect to MongoDB
 async function connectDB() {
     try {
-        await mongoose.connect("process.env.MONGO_URI", );
+        await mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/Login-tut");
         console.log("✅ Database Connected Successfully");
     } catch (error) {
         console.error("❌ Database Connection Failed:", error);
