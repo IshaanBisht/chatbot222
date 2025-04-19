@@ -37,7 +37,12 @@ io.use(sharedSession(sessionMiddleware, {
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "../public")));
+
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// This makes /static also point to public directory
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // View engine
 app.set("view engine", "ejs");
